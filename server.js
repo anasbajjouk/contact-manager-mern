@@ -1,11 +1,20 @@
 const express = require("express");
+const connectDB = require("./config/db");
 
+//Routes
 const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const contactsRoutes = require("./routes/contacts");
 
 const app = express();
 
+//Connect Database
+connectDB();
+
+//Init Middleware
+app.use(express.json());
+
+//TEST
 app.get("/", (req, res, next) => {
   res.json({ msg: "hello everyone" });
 });
